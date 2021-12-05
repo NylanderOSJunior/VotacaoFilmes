@@ -15,7 +15,7 @@ public class UserVotoController {
 	@Autowired
 	private UserVotoService userVotoService;
 	
-	@GetMapping("/uservoto")
+	@GetMapping("/uservotos")
 	public String getAllUserVoto(Model model) {
 		model.addAttribute("uservotos", userVotoService.findAll());
 		return "uservotos";
@@ -23,13 +23,13 @@ public class UserVotoController {
 
 	@GetMapping("/uservoto")
 	public String uservotoForm(Model model) {
-		model.addAttribute("product", new UserVoto());
+		model.addAttribute("uservoto", new UserVoto());
 		return "uservoto_form";
 	}
 	
 	@PostMapping("/uservoto")
 	public String saveUserVotoForm(@ModelAttribute UserVoto newUserVoto) {
 		userVotoService.save(newUserVoto);
-		return "redirect:/index";
+		return "redirect:/uservotos";
 	}
 }
